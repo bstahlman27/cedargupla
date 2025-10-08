@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>L Bozo then Ratio</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #0b2010;
+      color: #eef1ff;
+      display: grid;
+      place-items: center;
+      height: 100vh;
+    }
+    .card {
+      background: #12351a;
+      padding: 24px;
+      border-radius: 16px;
+      text-align: center;
+      border: 1px solid #2a6033;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+    }
+    h1 { margin-bottom: 12px; }
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin: 16px 0;
+    }
+    .stat {
+      background: #0e3011;
+      border: 1px solid #2a6036;
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+    }
+    button {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 10px;
+      background: #39601a;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 0 5px;
+    }
+    .ratio { margin-top: 12px; font-size: 1.2rem; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>L Bozo then Ratio</h1>
+    <p>Press <strong>1</strong> for dudes, <strong>2</strong> for chicks, and <strong>3</strong> if you’re taking a guess.<br>
+       When you’re done hit <strong>Ratio</strong>.</p>
+
+    <div class="stats">
+      <div class="stat">Dudes: <span id="count1">0</span></div>
+      <div class="stat">Chicks: <span id="count2">0</span></div>
+      <div class="stat">Thingys: <span id="count3">0</span></div>
+    </div>
+
+    <button id="doneBtn">Ratio</button>
+    <button id="resetBtn">Reset</button>
+
+    <div class="ratio" id="ratio"></div>
+  </div>
+
+  <script>
+    const c1El = document.getElementById('count1');
+    const c2El = document.getElementById('count2');
+    const c3El = document.getElementById('count3');
+    const ratioEl = document.getElementById('ratio');
+    const doneBtn = document.getElementById('doneBtn');
+    const resetBtn = document.getElementById('resetBtn');
+
+    let c1 = 0, c2 = 0, c3 = 0, locked = false;
+
+    function gcd(a, b) {
+      while (b) [a, b] = [b, a % b];
+      return Math.abs(a);
+    }
+
+    function gcd3(a, b, c) {
+      return gcd(gcd(a, b), c);
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (locked) return;
+
+      if (e.key === '1') {
+        c1++;
+      } else if (e.key === '2') {
+        c2++;
+      } else if (e.key === '3') {
+        c3++;
+      } else {
+        return;
+      }
+
+      c1El.textContent = c1;
+      c2El.textContent = c2;
+      c3El.textContent = c3;
+      ratioEl.textContent = '';
+    });
+
+    doneBtn.addEventListener('click', () => {
+      locked = true;
+      if (c1 === 0 && c2 === 0 && c3 === 0) {
+        ratioEl.textContent = 'Ratio: 0:0:0';
+      } else {
+        const g = gcd3(c1, c2, c3);
+        ratioEl.textContent = `${Math.floor(c1/g)}:${Math.floor(c2/g)}:${Math.floor(c3/g)}`;
+      }
+    });
+
+    resetBtn.addEventListener('click', () => {
+      c1 = 0; c2 = 0; c3 = 0; locked = false;
+      c1El.textContent = c1;
+      c2El.textContent = c2;
+      c3El.textContent = c3;
+      ratioEl.textContent = '';
+    });
+  </script>
+</body>
+</html>
