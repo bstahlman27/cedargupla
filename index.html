@@ -1,29 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Cedar Pages</title>
-	<link rel="stylesheet" href="styles/home.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cedar Pages</title>
+  <link rel="stylesheet" href="styles/home.css">
 </head>
 <body>
-	<header>
-		<h1>Cedar Gupla Pages</h1>
-	</header>
-	<main>
-		<div class="home-section">
-			<h2>Home</h2>
-			<p>More to come haha lol </p>
-		</div>
-		<div class="projects-section">
-			<h3>Links</h3>
-			<div class="card">
-				<a href="tally.html" class="card-link">L Bozo + Ratio</a>
-			</div>
-		</div>
-	</main>
-	<footer>
-		<p>Page intended for <b>Cedar Gupla</b> members + Chuck Mangione Listeners</p>
-	</footer>
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <h1 id="page-title">CedarGupla.com</h1>
+        <p class="lede">Cedar on the web. Damn right son.</p>
+      </div>
+    </section>
+
+    <section class="links-section" aria-labelledby="links-title">
+      <div class="section-heading">
+        <p class="eyebrow">The Cedar Pages:</p>
+        <h2 id="links-title"></h2>
+      </div>
+
+      <div class="link-grid">
+        <a class="link-card featured" href="tally.html">
+          <span class="card-kicker">OG cedar page</span>
+          <span class="card-title">L Bozo + Ratio</span>
+          <span class="card-copy">Too many dudes on the meg these days</span>
+        </a>
+
+        <a class="link-card" href="https://grater-sepia.vercel.app/">
+          <span class="card-kicker">Project</span>
+          <span class="card-title">Grater</span>
+          <span class="card-copy">For any and all non-lamers. Hop onna dam game.</span>
+        </a>
+
+        <a class="link-card" href="https://grooveboxd.vercel.app/">
+          <span class="card-kicker">Project</span>
+          <span class="card-title">Grooveboxd</span>
+          <span class="card-copy">Oh you like music? Rate every song.</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Page intended for <b>Cedar Gupla</b> members</p>
+  </footer>
 </body>
 </html>
